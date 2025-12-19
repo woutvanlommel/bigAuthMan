@@ -1,0 +1,22 @@
+<!-- src/app/pages/products/products.html -->
+<h1>🛍️ Products</h1>
+@if (loading()) {
+    <p>Loading...</p>
+}
+@if (error()) {
+    <strong>Error: {{ error() }}</strong>
+}
+
+
+<div class="productscontainer">
+  @for (p of products(); track p.id) {
+    <div class="card" style="width: 18rem;">
+    <img src="{{p.image}}" class="card-img-top" alt="...">
+    <div class="card-body">
+        <h5 class="card-title">{{p.title}}</h5>
+        <p class="card-text">{{p.description}}</p>
+        <a [routerLink]="['/product-detail', p.id]" class="btn btn-primary">View product</a>
+    </div>
+    </div>
+    }
+</div>

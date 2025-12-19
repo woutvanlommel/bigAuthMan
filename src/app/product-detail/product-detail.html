@@ -1,0 +1,28 @@
+<div class="product">
+<button routerLink="/products" class="btn btn-light">Go back to products</button>
+
+@if (loading()) {
+    <p>Loading...</p>
+}
+@if (error()) {
+    <strong>Error: {{ error() }}</strong>
+}
+@if (product(); as p) {
+    <div class="card" style="width: 24rem; margin-inline: auto;">
+    <img src="{{p.image}}" class="card-img-top" alt="Product Image" inline style="height: 300px; object-fit: contain; padding: 1rem;">
+    <div class="card-body">
+        <h5 class="card-title">{{p.title}}</h5>
+        <p class="card-text">{{p.description}}</p>
+        <div class="d-flex justify-content-between align-items-center">
+            <span class="h5 mb-0">{{p.price}}</span>
+            <div>
+                <small class="text-muted">({{p.rating?.rate}})</small>
+            </div>
+        </div>
+    </div>
+    <div class="card-footer d-flex justify-content-between bg-light">
+        <button class="btn btn-primary btn-sm">Add to Cart</button>
+    </div>
+</div>
+}
+</div>
